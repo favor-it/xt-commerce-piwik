@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xtcommerceplugin>
+	<title>Piwik Analytics</title>
+	<version>1.0.0</version>
+	<code>piwik_analytics</code>
+	<url>http://www.favor-it.net</url>
+	<description>Piwik Analytics Tracking Code Integration</description>
+	<type>tracking</type>
+	<icon>logo.png</icon>
+	<developer>Daniel Schumacher</developer>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later</license>
+	<plugin_code>
+		<code>
+			<hook>index_footer_tpl</hook>
+			<phpcode><![CDATA[
+				include _SRV_WEBROOT . _SRV_WEB_PLUGINS . 'piwik_analytics/hooks/index_footer_tpl.php';
+			]]></phpcode>
+			<order>1</order>
+			<active>1</active>
+		</code>
+	</plugin_code>
+	<configuration>
+		<config>
+			<key>PIWIK_ANALYTICS_STATUS</key>
+			<type>dropdown</type>
+			<url>conf_truefalse</url>
+			<value>false</value>
+			<de>
+				<title>Status</title>
+			</de>
+			<en>
+				<title>Status</title>
+			</en>
+			<es>
+				<title>Estado</title>
+			</es>
+			<bp>
+				<title>Estado</title>
+			</bp>
+		</config>
+		<config>
+			<key>PIWIK_ANALYTICS_ECOMMERCE</key>
+			<type>dropdown</type>
+			<url>conf_truefalse</url>
+			<value>true</value>
+			<de>
+				<title>Ecommerce</title>
+			</de>
+			<en>
+				<title>Ecommerce</title>
+			</en>
+			<es>
+				<title>Ecommerce</title>
+			</es>
+			<bp>
+				<title>Ecommerce</title>
+			</bp>
+		</config>
+		<config>
+			<key>PIWIK_ANALYTICS_SITE_ID</key>
+			<value></value>
+			<de>
+				<title>Seiten ID</title>
+			</de>
+			<en>
+				<title>Page ID</title>
+			</en>
+			<es>
+				<title>Página ID</title>
+			</es>
+			<bp>
+				<title>Página ID</title>
+			</bp>
+		</config>
+		<config>
+			<key>PIWIK_ANALYTICS_URL</key>
+			<value></value>
+			<de>
+				<title>Piwik URL (z.B.: www.DOMAIN.com/piwik)</title>
+			</de>
+			<en>
+				<title>Piwik URL (e.g.: www.DOMAIN.com/piwik)</title>
+			</en>
+			<es>
+				<title>Piwik URL (p.ej.: www.DOMAIN.com/piwik)</title>
+			</es>
+			<bp>
+				<title>Piwik URL (p.ex.: www.DOMAIN.com/piwik)</title>
+			</bp>
+		</config>
+		<config>
+			<key>PIWIK_ANALYTICS_IMAGE_TRACKING</key>
+			<type>dropdown</type>
+			<url>conf_truefalse</url>
+			<value>false</value>
+			<de>
+				<title>Nur Image Tracking</title>
+			</de>
+			<en>
+				<title>Only Image Trackeing</title>
+			</en>
+			<es>
+				<title>Solamente Image Tracking</title>
+			</es>
+			<bp>
+				<title>Somente Image Tracking</title>
+			</bp>
+		</config>
+		<config>
+			<key>PIWIK_ANALYTICS_ASYNCHRONOUS_LOADING</key>
+			<type>dropdown</type>
+			<url>conf_truefalse</url>
+			<value>true</value>
+			<de>
+				<title>Lade Piwik asynchron</title>
+			</de>
+			<en>
+				<title>Load Piwik asynchronously</title>
+			</en>
+			<es>
+				<title>Bajar Piwik asincrónico</title>
+			</es>
+			<bp>
+				<title>Baixar Piwik asincrónico</title>
+			</bp>
+		</config>
+	</configuration>
+</xtcommerceplugin>

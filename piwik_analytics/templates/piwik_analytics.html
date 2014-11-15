@@ -1,0 +1,15 @@
+<!-- Piwik -->
+<script type="text/javascript">
+  {literal}var _paq = _paq || [];{/literal}
+{$pa_ecommerce_data}{literal}  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//{/literal}{$pa_url}{literal}/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', {/literal}{$pa_site_id}{literal}]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();{/literal}
+</script>
+<noscript><p><img src="//{$pa_url}/piwik.php?idsite={$pa_site_id}" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
