@@ -32,4 +32,5 @@ See comments in [piwik_analytics/CHANGELOG](piwik_analytics/CHANGELOG)
 ## Contact
 
 http://www.favor-it.net/xtcommerce-plugins/piwik-analytics/
+
 info@favor-it.net
