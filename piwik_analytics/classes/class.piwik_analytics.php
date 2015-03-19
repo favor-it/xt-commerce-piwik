@@ -20,7 +20,7 @@
  * @category   xt:Commerce Plugin
  * @package    Piwik Analytics
  * @author     Daniel Schumacher <info@favor-it.net>
- * @copyright  2014 Daniel Schumacher
+ * @copyright  2015 Daniel Schumacher
  * @license    http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  * @link       http://www.favor-it.net/xtcommerce-plugins/piwik-analytics/
  *      
@@ -82,26 +82,26 @@ class piwikAnalytics {
 			switch ($_GET ['page']) {
 				case 'product' :
 					if (PIWIK_ANALYTICS_ASYNCHRONOUS_LOADING == 'true') {
-						$pa_ecommerce_addition .= '  _paq.push([\'setEcommerceView\', "' . $p_info->data ['products_model'] . '", "' . $p_info->data ['products_name'] . '", "' . $category->data ['categories_name'] . '", ' . round ( $p_info->data ['products_price'] ['plain'], 2 ) . ']);' . "\n";
+						$pa_ecommerce_addition .= '  _paq.push([\'setEcommerceView\', "' . $this->escapeString ( $p_info->data ['products_model'] ) . '", "' . $this->escapeString ( $p_info->data ['products_name'] ) . '", "' . $this->escapeString ( $category->data ['categories_name'] ) . '", ' . round ( $p_info->data ['products_price'] ['plain'], 2 ) . ']);' . "\n";
 					} else {
-						$pa_ecommerce_addition .= '    piwikTracker.setEcommerceView("' . $p_info->data ['products_model'] . '", "' . $p_info->data ['products_name'] . '", "' . $category->data ['categories_name'] . '", ' . round ( $p_info->data ['products_price'] ['plain'], 2 ) . ');' . "\n";
+						$pa_ecommerce_addition .= '    piwikTracker.setEcommerceView("' . $this->escapeString ( $p_info->data ['products_model'] ) . '", "' . $this->escapeString ( $p_info->data ['products_name'] ) . '", "' . $this->escapeString ( $category->data ['categories_name'] ) . '", ' . round ( $p_info->data ['products_price'] ['plain'], 2 ) . ');' . "\n";
 					}
 					break;
 				
 				case 'categorie' :
 					if (PIWIK_ANALYTICS_ASYNCHRONOUS_LOADING == 'true') {
-						$pa_ecommerce_addition .= '  _paq.push([\'setEcommerceView\', productSku = false, productName = false, category = "' . $category->data ['categories_name'] . '"]);' . "\n";
+						$pa_ecommerce_addition .= '  _paq.push([\'setEcommerceView\', productSku = false, productName = false, category = "' . $this->escapeString ( $category->data ['categories_name'] ) . '"]);' . "\n";
 					} else {
-						$pa_ecommerce_addition .= '    piwikTracker.setEcommerceView(productSku = false, productName = false, category = "' . $category->data ['categories_name'] . '");' . "\n";
+						$pa_ecommerce_addition .= '    piwikTracker.setEcommerceView(productSku = false, productName = false, category = "' . $this->escapeString ( $category->data ['categories_name'] ) . '");' . "\n";
 					}
 					break;
 				
 				case 'cart' :
 					foreach ( $_SESSION ['cart']->show_content as $key => $arr ) {
 						if (PIWIK_ANALYTICS_ASYNCHRONOUS_LOADING == 'true') {
-							$pa_ecommerce_addition .= '  _paq.push([\'addEcommerceItem\', "' . $arr ['products_model'] . '", "' . $arr ['products_name'] . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ']);' . "\n";
+							$pa_ecommerce_addition .= '  _paq.push([\'addEcommerceItem\', "' . $this->escapeString ( $arr ['products_model'] ) . '", "' . $this->escapeString ( $arr ['products_name'] ) . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ']);' . "\n";
 						} else {
-							$pa_ecommerce_addition .= '    piwikTracker.addEcommerceItem("' . $arr ['products_model'] . '", "' . $arr ['products_name'] . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ');' . "\n";
+							$pa_ecommerce_addition .= '    piwikTracker.addEcommerceItem("' . $this->escapeString ( $arr ['products_model'] ) . '", "' . $this->escapeString ( $arr ['products_name'] ) . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ');' . "\n";
 						}
 					}
 					if (($_SESSION ['cart']->content_total ['plain']) != 0) {
@@ -127,9 +127,9 @@ class piwikAnalytics {
 							}
 							
 							if (PIWIK_ANALYTICS_ASYNCHRONOUS_LOADING == 'true') {
-								$pa_ecommerce_addition .= '  _paq.push([\'addEcommerceItem\', "' . $arr ['products_model'] . '", "' . $arr ['products_name'] . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ']);' . "\n";
+								$pa_ecommerce_addition .= '  _paq.push([\'addEcommerceItem\', "' . $this->escapeString ( $arr ['products_model'] ) . '", "' . $this->escapeString ( $arr ['products_name'] ) . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ']);' . "\n";
 							} else {
-								$pa_ecommerce_addition .= '    piwikTracker.addEcommerceItem("' . $arr ['products_model'] . '", "' . $arr ['products_name'] . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ');' . "\n";
+								$pa_ecommerce_addition .= '    piwikTracker.addEcommerceItem("' . $this->escapeString ( $arr ['products_model'] ) . '", "' . $this->escapeString ( $arr ['products_name'] ) . '", ' . $this->getCategories ( $arr ['products_id'] ) . ', ' . round ( $arr ['products_price'] ['plain'], 2 ) . ', ' . $arr ['products_quantity'] . ');' . "\n";
 							}
 						}
 						
@@ -175,7 +175,7 @@ class piwikAnalytics {
 		$i = 0;
 		$pa_number_of_categories = count ( $pa_categories );
 		foreach ( $pa_categories as $pa_category ) {
-			$pa_categories_string .= '"' . $pa_category . '"';
+			$pa_categories_string .= '"' . $this->escapeString ( $pa_category ) . '"';
 			
 			if (++ $i != $pa_number_of_categories) {
 				$pa_categories_string .= ', ';
@@ -210,6 +210,16 @@ class piwikAnalytics {
 		}
 		
 		return rtrim ( $url, "/" );
+	}
+	
+	/**
+	 * Escape strings
+	 *
+	 * @param string $input_string        	
+	 * @return string
+	 */
+	private function escapeString($input_string) {
+		return addslashes ( $input_string );
 	}
 }
 ?>

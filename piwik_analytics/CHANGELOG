@@ -1,5 +1,9 @@
 # Piwik Analytics Plugin Changelog
 
+## Version 1.0.1
+
+* Update, fixing problems when double quotes are used in Product SKUs, Names or categories. These fields are escaped properly now.
+
 ## Version 1.0.0
 
 * First release

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xtcommerceplugin>
 	<title>Piwik Analytics</title>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<code>piwik_analytics</code>
 	<url>http://www.favor-it.net</url>
 	<description>Piwik Analytics Tracking Code Integration</description>
