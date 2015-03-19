@@ -9,6 +9,16 @@
 	<icon>logo.png</icon>
 	<developer>Daniel Schumacher</developer>
 	<license>http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later</license>
+	<minimumupdateversion>1.0.0</minimumupdateversion>
+	<db_update>
+		<update>
+			<version>1.0.0</version>
+			<to_version>1.0.1</to_version>
+			<code><![CDATA[
+				]]>
+			</code>
+		</update>
+	</db_update>
 	<plugin_code>
 		<code>
 			<hook>index_footer_tpl</hook>
